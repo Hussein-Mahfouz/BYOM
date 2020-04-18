@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586983152440.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1006447245",
+    "id" : "29FA2E53",
+    "lastKnownWriteTime" : 1587234011,
+    "last_content_update" : 1587234011043,
+    "path" : "~/Documents/Code Repos/BYOM/Nature.R",
+    "project_path" : "Nature.R",
+    "properties" : {
+        "cursorPosition" : "41,5",
+        "scrollLine" : "30"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
