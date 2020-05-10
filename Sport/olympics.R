@@ -3,6 +3,11 @@ library(tidyr)
 library(dplyr)
 library(readr)
 library(jsonlite)
+library(ggplot2)
+library(ggthemes)
+library(gganimate)
+library(maps)
+library(transformr)
 
 data = read_csv("Summer_Olympic_medallists_1896_2008.csv", skip = 4)
 # read in world map as sf
@@ -29,12 +34,30 @@ year_best = data %>% group_by(Edition) %>%
 
 year_best$best_country[year_best$best_country=='GRE'] <- 'GRC'
 year_best$best_country[year_best$best_country=='URS'] <- 'RUS'
+year_best$best_country[year_best$best_country=='GER'] <- 'DEU'
+
 
 # merge map with year_best
 x <- merge(world, year_best)
 # filter to get only the rows where the spatial data matches the winning country
-mteq <- x[x$iso_a3==x$best_country, ]
+map_winners <- x[x$iso_a3==x$best_country, ]
 
-filter(x, sov_a3 == year_best)
-x2 <- left_join(world, year_best, by = c("sov_a3" = "best_country"))
-x2 <- left_join(year_best, world, by = c("best_country" = "sov_a3"))
+# create new column as ggplot title https://stackoverflow.com/questions/53864892/gganimate-include-additional-variable-other-than-states-level-variable-or-frame
+map_winners <- mutate(map_winners, title_var2 = factor(paste(Edition, sovereignt, medals, sep=" - "), levels = paste(Edition, sovereignt, medals, sep=" - ")))
+
+
+plot(st_geometry(map_winners))
+
+p <- ggplot(data = world) +
+      geom_sf() +
+      geom_sf(data = map_winners, aes(fill = medals)) +
+      theme(plot.title = element_text(size = 40, face = "bold")) +
+      labs(title = "{closest_state} Medals") +
+      scale_fill_viridis_c(trans = "sqrt", alpha = .4) + 
+      transition_states(map_winners$title_var2, state_length = 15) +
+      enter_fade() +
+      exit_fade()
+
+animate(p, height = 560, width = 990, duration = 52, nframes = 26)
+anim_save("olympics2.gif")
+
