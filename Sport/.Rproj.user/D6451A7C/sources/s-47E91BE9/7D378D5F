@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588879064336.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "664512742",
+    "id" : "7D378D5F",
+    "lastKnownWriteTime" : 1589101083,
+    "last_content_update" : 1589126777824,
+    "path" : "~/Documents/Code Repos/BYOM/Sport/tour_de_france_2018.R",
+    "project_path" : "tour_de_france_2018.R",
+    "properties" : {
+        "cursorPosition" : "63,0",
+        "scrollLine" : "43",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

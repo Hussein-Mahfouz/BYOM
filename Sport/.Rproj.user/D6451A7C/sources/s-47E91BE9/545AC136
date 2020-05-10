@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589101758177.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "545AC136",
+    "lastKnownWriteTime" : 4369084957,
+    "last_content_update" : 1589101758177,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "4DCB5EF2",
+        "caption" : "map_winners",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=map_winners&cache_key=4DCB5EF2",
+        "displayedObservations" : 26,
+        "environment" : "",
+        "expression" : "map_winners",
+        "object" : "map_winners",
+        "preview" : 0,
+        "totalObservations" : 26,
+        "variables" : 6
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
