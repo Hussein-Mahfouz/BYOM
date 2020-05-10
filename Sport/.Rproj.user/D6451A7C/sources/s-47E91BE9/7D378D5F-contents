@@ -58,6 +58,6 @@ p <- ggplot(data = world) +
       enter_fade() +
       exit_fade()
 
-animate(p, height = 1080, width = 1980, duration = 52, nframes = 26)
-anim_save("olympics.gif")
+animate(p, height = 560, width = 990, duration = 52, nframes = 26)
+anim_save("olympics2.gif")
 
