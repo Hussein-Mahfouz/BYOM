@@ -1,0 +1,3 @@
+"0","library(sf)"
+"0","roads2 <- osmdata_sf(roads)"
+"0","plot(st_geometry(roads2$osm_lines))"

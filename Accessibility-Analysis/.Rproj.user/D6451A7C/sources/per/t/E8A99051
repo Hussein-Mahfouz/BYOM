@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594158995436.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1023401948",
+    "id" : "E8A99051",
+    "lastKnownWriteTime" : 1594162689,
+    "last_content_update" : 1594162689319,
+    "path" : "~/Documents/Code Repos/BYOM/Accessibility-Analysis/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "115,9",
+        "scrollLine" : "108"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

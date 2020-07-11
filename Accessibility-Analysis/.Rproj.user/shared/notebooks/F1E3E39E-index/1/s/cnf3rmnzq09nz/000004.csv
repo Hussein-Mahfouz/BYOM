@@ -1,0 +1,5 @@
+"0","flows <- flows %>% group_by(`Area of workplace`) %>%"
+"0","  summarize(jobs = sum(`All categories: Method of travel to work`))"
+"2","`summarise()` ungrouping output (override with `.groups` argument)
+"
+"0","head(flows)"

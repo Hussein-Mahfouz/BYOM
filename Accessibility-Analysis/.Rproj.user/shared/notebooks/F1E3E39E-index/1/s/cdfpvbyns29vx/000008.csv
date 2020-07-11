@@ -1,0 +1,4 @@
+"0","# filter only MSOAs in Manchester, using the MSOAS df"
+"0","msoa_geom <- msoa_geom %>% dplyr::filter(msoa11cd %in% MSOAS$`Area of workplace`)"
+"0",""
+"0","plot(st_geometry(msoa_geom))"
