@@ -182,10 +182,24 @@ sel_sgbp <- st_intersects(x=roads, y=parks_all)
 sel_logical <- lengths(sel_sgbp) == 0
 roads <- roads[sel_logical, ]
 
-rm(sel_logical, sel_sgbp)
-
 # combine into one geometry for faster plotting
 roads <- st_union(roads)
+
+# same but for epping forest incet map
+roads_epping <- opq (bbox = st_bbox(parks_epping)) %>%
+  add_osm_feature(key = "highway") %>%
+  osmdata_sf()
+roads_epping <- roads_epping$osm_lines
+
+sel_sgbp <- st_intersects(x=roads_epping, y=parks_epping)
+sel_logical <- lengths(sel_sgbp) == 0
+roads_epping <- roads_epping[sel_logical, ]
+
+roads_epping <- st_union(roads_epping)
+
+
+rm(sel_logical, sel_sgbp)
+
 ############################################### MAP ##########################################
 
 tm_shape(cycle_infra_hollow) +
@@ -213,7 +227,13 @@ tm_layout(title = "Life Under Lockdown",
 
 #epping forest
 tm_shape(parks_epping) +
-  tm_fill(col = 'palegreen3') -> map_epping
+  tm_fill(col = 'palegreen3')  +
+tm_shape(roads_epping) +
+  tm_lines(col = 'grey70',
+           lwd = 1,
+           alpha = 0.25) +
+  tm_layout(frame.lwd =  4,
+            frame = "grey50")-> map_epping
 
 # to check
 map_base
@@ -240,14 +260,14 @@ tm_shape(cycle_infra_hollow) +
            lwd = 1.6,
            alpha = 0.4) +
   tm_shape(parks_no_epping) +
-  tm_fill(col = 'palegreen3') +   ##5DBB63
+  tm_fill(col = 'palegreen3') +   ##5DBB63   #008080
   tm_shape(home) +
   tm_dots(size = 0.1, 
           alpha = 0.8,
           col = "brown") +
-  tm_layout(title = "Life Under Lockdown",        
-            title.size = 1.2,
-            title.color = "azure4",
+  tm_layout(title = "Cycling Through Lockdown",        
+            title.size = 1,
+            title.color = "azure4", #grey55
             title.position = c("left", "bottom"),
             title.bg.color = 'white',
             title.bg.alpha = 0.5,
@@ -258,3 +278,50 @@ tm_shape(cycle_infra_hollow) +
 tmap_save(map_roads, insets_tm = map_epping, 
           insets_vp=viewport(x= 0.9, y = 0.8, width= 0.4, height= 0.4), 
           filename="lockdown_roads.png", dpi=1000)
+
+
+############################################### MAP WITH ROADS COLORED DIFFERENTLY ##########################################
+#epping forest
+tm_shape(parks_epping) +
+  tm_fill(col = '#008080')  +
+  tm_shape(roads_epping) +
+  tm_lines(col = '#2B22AA',
+           lwd = 1,
+           alpha = 0.2) +
+  tm_layout(frame.lwd =  4,
+            frame = "grey50")-> map_epping_inv
+
+
+tm_shape(roads) +
+  tm_lines(col = '#2B22AA',
+           lwd = 1,
+           alpha = 0.2) +
+  tm_shape(cycle_infra_hollow) +
+  tm_lines(col = 'grey40',
+           lwd = 1.6,
+           alpha = 0.7) +
+  tm_shape(cycleways_hollow) +
+  tm_lines(col = 'grey40',
+           lwd = 2,
+           alpha = 0.7) +
+  tm_shape(parks_no_epping) +
+  tm_fill(col = '#008080') +   ##5DBB63   #008080
+  tm_shape(home) +
+  tm_dots(size = 0.15, 
+          alpha = 0.8,
+          col = "brown") +
+  tm_layout(title = "Cycling Through Lockdown",        
+            title.size = 1,
+            title.color = "azure4", #grey55
+            title.position = c("left", "bottom"),
+            title.bg.color = 'white',
+            title.bg.alpha = 0.5,
+            fontfamily = 'Georgia',
+            frame = FALSE) -> map_roads_inv
+
+# Save
+tmap_save(map_roads_inv, insets_tm = map_epping_inv, 
+          insets_vp=viewport(x= 0.9, y = 0.8, width= 0.4, height= 0.4), 
+          filename="lockdown_roads_inv.png", dpi=1000)
+
+
