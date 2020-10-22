@@ -248,19 +248,19 @@ tmap_save(map_base, insets_tm = map_epping,
 ############################################### MAP WITH ROADS ##########################################
 
 tm_shape(roads) +
-  tm_lines(col = 'grey70',
+  tm_lines(col = '#1034A6',     # Egyptian Blue #1034A6
            lwd = 1,
-           alpha = 0.25) +
+           alpha = 0.15) +
 tm_shape(cycle_infra_hollow) +
-  tm_lines(col = '#2B22AA',
+  tm_lines(col = '#1034A6',
            lwd = 1.6,
-           alpha = 0.4) +
+           alpha = 0.6) +
   tm_shape(cycleways_hollow) +
-  tm_lines(col = '#2B22AA',
+  tm_lines(col = '#1034A6',
            lwd = 1.6,
-           alpha = 0.4) +
+           alpha = 0.6) +
   tm_shape(parks_no_epping) +
-  tm_fill(col = 'palegreen3') +   ##5DBB63   #008080
+  tm_fill(col = '#008080') +   ##5DBB63    palegreen3
   tm_shape(home) +
   tm_dots(size = 0.1, 
           alpha = 0.8,
@@ -274,10 +274,20 @@ tm_shape(cycle_infra_hollow) +
             fontfamily = 'Georgia',
             frame = FALSE) -> map_roads
 
+#epping forest
+tm_shape(parks_epping) +
+  tm_fill(col = '#008080')  +
+  tm_shape(roads_epping) +
+  tm_lines(col = '#1034A6',
+           lwd = 1,
+           alpha = 0.15) +
+  tm_layout(frame.lwd =  4,
+            frame = "grey50")-> map_epping
+
 # Save
 tmap_save(map_roads, insets_tm = map_epping, 
           insets_vp=viewport(x= 0.9, y = 0.8, width= 0.4, height= 0.4), 
-          filename="lockdown_roads.png", dpi=1000)
+          filename="lockdown_roads_egy_dense.png", dpi=1000)
 
 
 ############################################### MAP WITH ROADS COLORED DIFFERENTLY ##########################################
@@ -293,7 +303,7 @@ tm_shape(parks_epping) +
 
 
 tm_shape(roads) +
-  tm_lines(col = '#2B22AA',
+  tm_lines(col = '#2B22AA',   # Egyptian Blue #1034A6
            lwd = 1,
            alpha = 0.2) +
   tm_shape(cycle_infra_hollow) +
@@ -305,7 +315,7 @@ tm_shape(roads) +
            lwd = 2,
            alpha = 0.7) +
   tm_shape(parks_no_epping) +
-  tm_fill(col = '#008080') +   ##5DBB63   #008080
+  tm_fill(col = '#008080') +   ##5DBB63   #008080  
   tm_shape(home) +
   tm_dots(size = 0.15, 
           alpha = 0.8,
@@ -322,6 +332,6 @@ tm_shape(roads) +
 # Save
 tmap_save(map_roads_inv, insets_tm = map_epping_inv, 
           insets_vp=viewport(x= 0.9, y = 0.8, width= 0.4, height= 0.4), 
-          filename="lockdown_roads_inv.png", dpi=1000)
+          filename="lockdown_roads_inv2.png", dpi=1000)
 
 

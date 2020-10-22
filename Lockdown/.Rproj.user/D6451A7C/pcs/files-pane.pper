@@ -1,9 +1,9 @@
 {
-    "path" : "~/Documents/Code Repos/BYOM/Lockdown",
-    "sortOrder" : [
+    "path": "~/Documents/Code Repos/BYOM/Lockdown",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "ascending": true,
+            "columnIndex": 2
         }
     ]
 }

@@ -1,3 +1,0 @@
-"0","roads <- opq(bbox = ""manchester uk"") %>%"
-"0","  add_osm_feature(key = 'highway')  "
-"0",""

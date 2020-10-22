@@ -1,0 +1,19 @@
+library(tidyverse)
+library(osmdata)
+library(sf)
+
+
+bb = getbb(c(29.839865, 30.821694, 30.273687, 31.779730))
+
+
+query <- opq(bbox = c(30.801369, 29.705080, 31.874483, 30.390664)) %>%
+  add_osm_feature(key = "amenity", value = "charging_station") %>%
+  osmdata_sf()
+
+plot(st_geometry(query$osm_points))
+
+query2 <- opq(bbox = c(30.801369, 29.705080, 31.874483, 30.390664)) %>%
+  add_osm_feature(key = "highway", value = "motorway") %>%
+  osmdata_sf()
+
+plot(st_geometry(query2$osm_lines))
